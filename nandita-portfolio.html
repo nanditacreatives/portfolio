@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nandita Pathardikar — Content & Growth</title>
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --surface2: #1c1c1c;
+      --border: #2a2a2a;
+      --accent: #c8f135;
+      --accent2: #a8d420;
+      --text: #e8e8e8;
+      --muted: #888;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      line-height: 1.6;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(13,13,13,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Georgia', serif;
+      font-size: 1.05rem;
+      font-weight: normal;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      font-weight: normal;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 32px;
+      max-width: 820px;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0d0d0d;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 48px;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 100px 48px;
+    }
+
+    .section-label {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: normal;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .section-body {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* ─── BELIEFS ─── */
+    #beliefs .beliefs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      margin-top: 56px;
+      border: 1px solid var(--border);
+    }
+
+    .belief-card {
+      background: var(--surface);
+      padding: 36px 32px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .belief-num {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    .belief-card h3 {
+      font-size: 1.05rem;
+      font-weight: normal;
+      color: var(--white);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .belief-card p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── CONTENT WORK ─── */
+    #content .channels-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .channel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 32px;
+      text-decoration: none;
+      transition: border-color 0.25s, transform 0.2s;
+      display: block;
+    }
+
+    .channel-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .channel-platform {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .channel-card h3 {
+      font-size: 1.25rem;
+      color: var(--white);
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .channel-card p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .channel-arrow {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── SYSTEMS PROOF ─── */
+    #systems .proof-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 56px;
+      overflow: hidden;
+    }
+
+    .proof-header {
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .proof-tag {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(200,241,53,0.1);
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(200,241,53,0.25);
+      white-space: nowrap;
+    }
+
+    .proof-title {
+      font-size: 1.15rem;
+      color: var(--white);
+      font-weight: normal;
+    }
+
+    .proof-body {
+      padding: 36px;
+    }
+
+    .proof-body p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.93rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .proof-body p:last-child { margin-bottom: 0; }
+
+    .proof-quote {
+      border-left: 3px solid var(--accent);
+      padding: 16px 24px;
+      margin: 28px 0;
+      background: rgba(200,241,53,0.04);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .proof-quote p {
+      font-family: 'Georgia', serif;
+      font-style: italic;
+      color: var(--text) !important;
+      font-size: 1rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    .system-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .pillar {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    }
+
+    .pillar-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .pillar p {
+      font-size: 0.82rem !important;
+      color: var(--muted) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* ─── PM CREDENTIALS ─── */
+    #background .exp-list {
+      margin-top: 56px;
+      border-top: 1px solid var(--border);
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-meta {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    }
+
+    .exp-company {
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .exp-date {
+      font-size: 0.8rem;
+      color: #555;
+    }
+
+    .exp-content h3 {
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .exp-content p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .exp-tag {
+      display: inline-block;
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(200,241,53,0.3);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    /* ─── SKILLS ─── */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      margin-top: 56px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-group {
+      background: var(--surface);
+      padding: 28px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-group-title {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      text-align: center;
+    }
+
+    #contact .contact-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 72px 48px;
+    }
+
+    #contact h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: normal;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    #contact p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      max-width: 460px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.65;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    footer p {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.78rem;
+      color: #444;
+    }
+
+    footer a {
+      font-family: -apple-system, 'Helvetica Neue', sans-serif;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .hero { padding: 100px 24px 64px; }
+      .section-divider { margin: 0 24px; }
+      #content .channels-row { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .system-pillars { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">Nandita Pathardikar</a>
+    <ul class="nav-links">
+      <li><a href="#beliefs">Beliefs</a></li>
+      <li><a href="#content">Content</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="hero">
+      <p class="hero-tag">Content · Growth · AI-Native</p>
+      <h1>
+        Most content people<br>
+        can't think in systems.<br>
+        Most PMs can't <em>make</em> content.<br>
+        I do both.
+      </h1>
+      <p class="hero-sub">
+        I'm a product manager who creates content — not as a hobby, but as a craft I've built
+        systems around. I think in pipelines, measure everything, and use AI as a production engine,
+        not a shortcut.
+      </p>
+      <div class="hero-ctas">
+        <a href="#content" class="btn-primary">See the work →</a>
+        <a href="mailto:nandita.nandita08@gmail.com" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" />
+
+  <!-- BELIEFS -->
+  <section id="beliefs">
+    <p class="section-label">Point of View</p>
+    <h2 class="section-title">What I believe about<br>B2B content in 2026</h2>
+    <p class="section-body">
+      The job asks for strong opinions. Here they are — unfiltered.
+    </p>
+
+    <div class="beliefs-grid">
+      <div class="belief-card">
+        <p class="belief-num">01</p>
+        <h3>Generic AI content is the death of brand, not a shortcut to volume</h3>
+        <p>The failure mode of AI-generated content isn't quantity — it's that it sounds like nobody. The job is feeding models the right raw material: real customer language, actual POVs, specific examples. Prompting from nothing gives you nothing.</p>
+      </div>
+      <div class="belief-card">
+        <p class="belief-num">02</p>
+        <h3>SEO without topical authority is a leaky bucket</h3>
+        <p>Publishing 50 blog posts across 20 topics doesn't win search in 2026. Depth in fewer categories, tight internal linking, and content that earns AI overview citations — that's what moves organic. Spray-and-pray is dead.</p>
+      </div>
+      <div class="belief-card">
+        <p class="belief-num">03</p>
+        <h3>Sales assets fail because content people don't sit in sales calls</h3>
+        <p>Most sales enablement content is built from assumptions, not actual objections. The best proof assets I've seen come from someone who listened to 20 sales calls, identified the three questions that stall every deal, and answered those specifically.</p>
+      </div>
+      <div class="belief-card">
+        <p class="belief-num">04</p>
+        <h3>Content pipelines are product problems</h3>
+        <p>A content team without a system is just a collection of one-off projects. The infrastructure matters as much as the output — prompt libraries, brand voice docs, brief templates, measurement dashboards. Without them, quality doesn't scale.</p>
+      </div>
+      <div class="belief-card">
+        <p class="belief-num">05</p>
+        <h3>Creative volume is a competitive moat — if the bar is right</h3>
+        <p>The teams winning paid social test 30 creative variants per concept, not 3. But volume without an editorial bar produces noise. The goal is building a machine that can move fast without losing taste.</p>
+      </div>
+      <div class="belief-card">
+        <p class="belief-num">06</p>
+        <h3>The best B2B content is written for one person, not a segment</h3>
+        <p>The content that moves pipeline reads like it was written for the person opening it. That's not a style choice — it comes from doing enough customer interviews that you know exactly what they say to their boss when they're frustrated.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- CONTENT WORK -->
+  <section id="content">
+    <p class="section-label">Published Work</p>
+    <h2 class="section-title">Content I make and own</h2>
+    <p class="section-body">
+      Both channels are active. The Instagram is a live experiment in building a content system from scratch —
+      hook engineering, batch production, and measuring what actually drives engagement.
+      The YouTube channel documents the process behind making things.
+    </p>
+
+    <div class="channels-row">
+      <a href="https://www.instagram.com/nandita._/" target="_blank" class="channel-card">
+        <p class="channel-platform">Instagram · @nandita._</p>
+        <h3>Cinematic storytelling<br>& the creator process</h3>
+        <p>
+          Short-form video — reels built on deliberate hooks, cinematic b-roll, and captions engineered
+          for comments. One video hit 163K views. Documenting a 60-day creative series with
+          full production bibles, shot lists, and batch-shoot schedules.
+        </p>
+        <span class="channel-arrow">View profile ↗</span>
+      </a>
+
+      <a href="https://www.youtube.com/channel/UClhIqVVrHlFAtBk3uxcCV3Q" target="_blank" class="channel-card">
+        <p class="channel-platform">YouTube · Vlogs</p>
+        <h3>Long-form video<br>& behind-the-scenes</h3>
+        <p>
+          A YouTube vlog where the process is the content — how ideas get made, what creative
+          ruts look like from the inside, and what actually happens between the polished posts.
+          On-camera, scripted, and edited end-to-end.
+        </p>
+        <span class="channel-arrow">View channel ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SYSTEMS PROOF -->
+  <section id="systems">
+    <p class="section-label">Content Systems</p>
+    <h2 class="section-title">Strategy, not just posts</h2>
+    <p class="section-body">
+      Building content that scales requires infrastructure. Here's what that looks like when I run it.
+    </p>
+
+    <div class="proof-card">
+      <div class="proof-header">
+        <p class="proof-title">60-Day Instagram Content Series — Full Production Bible</p>
+        <span class="proof-tag">Content Strategy · System Design</span>
+      </div>
+      <div class="proof-body">
+        <p>
+          Before posting a single reel in a 60-day series, I built a complete production bible:
+          28+ days of content planned to the shot level, with per-day concept rationale, shot lists,
+          voiceover scripts, edit notes, caption copy, hashtag strategy, and CTAs — all tied to
+          a batch-shoot schedule designed to maximize output per filming session.
+        </p>
+
+        <div class="proof-quote">
+          <p>"Batch shoot Sunday evening + Monday morning. Four of the seven reels can be filmed in two sessions if you plan the locations in advance."</p>
+        </div>
+
+        <p>
+          Every content decision in the bible is explained — not just what to post, but why that angle,
+          why that format, and what the failure mode looks like. Hook types are varied deliberately across
+          the week. Engagement tactics (comment prompts, A/B voting, transparency plays) are rotated
+          to test what drives interaction.
+        </p>
+
+        <div class="system-pillars">
+          <div class="pillar">
+            <p class="pillar-label">Production</p>
+            <p>Per-day shot lists, wardrobe notes, location specs, audio direction, edit grades</p>
+          </div>
+          <div class="pillar">
+            <p class="pillar-label">Distribution</p>
+            <p>Caption copy, CTA engineering, hashtag strategy, pinned comment scripts</p>
+          </div>
+          <div class="pillar">
+            <p class="pillar-label">Measurement</p>
+            <p>Weekly analytics review built into the schedule; performance-driven iteration on hook formats and content types</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <p class="section-label">Professional Background</p>
+    <h2 class="section-title">Where the systems thinking comes from</h2>
+    <p class="section-body">
+      Five years as a product manager taught me how to ship things at scale, measure what matters,
+      and build cross-functional systems that hold. That's what I'm bringing to content.
+    </p>
+
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-company">T-Mobile</p>
+          <p class="exp-date">2024 – Present</p>
+        </div>
+        <div class="exp-content">
+          <span class="exp-tag">AI-Native Production</span>
+          <h3>Built an LLM content pipeline from scratch</h3>
+          <p>
+            Designed and shipped a Gen AI workflow using OpenAI API and Custom GPTs to parse complex documents
+            and auto-generate downstream content at scale. Built the prompt library, defined evaluation criteria,
+            iterated on failure modes. Eliminated 3 hours of manual work per release cycle. This is the same
+            muscle content ops requires.
+          </p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-company">Jio Platforms</p>
+          <p class="exp-date">2019 – 2021</p>
+        </div>
+        <div class="exp-content">
+          <span class="exp-tag">Scale · Brand · Campaigns</span>
+          <h3>Scaled a content product to 242M users across brand campaigns</h3>
+          <p>
+            Owned the full product lifecycle for Jio Cricket Play Along — including 5+ brand marketing campaigns,
+            live content operations, and 121M+ user gratifications. Led a User Generated Content product
+            0-to-1 with an 11-person cross-functional team. Ran A/B testing on content formats to drive
+            engagement and conversion.
+          </p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-meta">
+          <p class="exp-company">Acquia</p>
+          <p class="exp-date">2021 – 2022</p>
+        </div>
+        <div class="exp-content">
+          <span class="exp-tag">B2B · Multi-Channel · Adoption</span>
+          <h3>Built the content and engagement system for a platform-wide migration</h3>
+          <p>
+            Designed and ran a segmented multi-channel engagement strategy across thousands of enterprise B2B
+            customers — calibrated by customer tier and risk. Achieved 70%+ voluntary adoption with zero major
+            disruptions. Iterated the channel and content mix weekly based on adoption telemetry. Earned VP-
+            and founder-level recognition; became the org-wide reference model.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Skills & Tools</p>
+    <h2 class="section-title">What I work with</h2>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <p class="skill-group-title">AI Content Production</p>
+        <div class="skill-tags">
+          <span class="skill-tag">LLMs (OpenAI, Claude)</span>
+          <span class="skill-tag">Prompt engineering</span>
+          <span class="skill-tag">Image gen</span>
+          <span class="skill-tag">AI video tools</span>
+          <span class="skill-tag">Evaluation design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Content Strategy</p>
+        <div class="skill-tags">
+          <span class="skill-tag">SEO fundamentals</span>
+          <span class="skill-tag">Topical authority</span>
+          <span class="skill-tag">Hook engineering</span>
+          <span class="skill-tag">Editorial planning</span>
+          <span class="skill-tag">Content pipeline design</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Production & Creative</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Short-form video</span>
+          <span class="skill-tag">Scripting & VO</span>
+          <span class="skill-tag">Canva</span>
+          <span class="skill-tag">CapCut</span>
+          <span class="skill-tag">On-camera</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <p class="skill-group-title">Analytics & Measurement</p>
+        <div class="skill-tags">
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Tableau</span>
+          <span class="skill-tag">Power BI</span>
+          <span class="skill-tag">A/B testing</span>
+          <span class="skill-tag">Google Search Console</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="section-divider" />
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <h2>Let's talk about what<br>good content looks like.</h2>
+      <p>
+        I have opinions on B2B content in 2026 and I'm happy to share them in a conversation.
+        Reach out directly.
+      </p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+        <a href="mailto:nandita.nandita08@gmail.com" class="btn-primary">nandita.nandita08@gmail.com</a>
+        <a href="https://www.linkedin.com/in/nanditapathardikar/" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Nandita Pathardikar</p>
+    <div style="display:flex; gap:24px;">
+      <a href="https://www.instagram.com/nandita._/" target="_blank">Instagram</a>
+      <a href="https://www.youtube.com/channel/UClhIqVVrHlFAtBk3uxcCV3Q" target="_blank">YouTube</a>
+      <a href="mailto:nandita.nandita08@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</body>
+</html>
